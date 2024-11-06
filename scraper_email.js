@@ -15,7 +15,7 @@ async function scrapeData() {
         const $ = cheerio.load(data);
 
         const title = $('h1.ui-pdp-title').text().trim();
-        const price = parseFloat($('span.andes-money-amount__fraction').text().trim()).toFixed(3);
+        const price = $('span.andes-money-amount__fraction').eq(1).text().trim();
         const color = $('#picker-label-COLOR').text().trim() || 'Cor não encontrada';
 
         return { title, price, color };
